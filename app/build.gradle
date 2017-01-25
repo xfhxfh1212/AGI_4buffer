@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        applicationId "com.example.jbtang.agi_4buffer"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "16.12.21"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+task copyNativeLibs(type: Copy) {
+    from fileTree(dir: 'libs', include: 'armeabi/*.so') into 'build/lib'
+}
+tasks.withType(JavaCompile) {
+    compileTask -> compileTask.dependsOn copyNativeLibs
+}
+clean.dependsOn 'cleanCopyNativeLibs'
+tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->
+    pkgTask.jniFolders = [new File(buildDir, 'lib')]
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/monitorlib.jar')
+    compile files('libs/achartengine-1.2.0.jar')
+    compile files('libs/core.jar')
+    compile files('libs/framework.jar')
+    compile files('libs/jsch-0.1.50.jar')
+    compile files('libs/ganymed-ssh2-build210.jar')
+    compile 'com.android.support:percent:23.1.1'
+    compile 'com.google.android.gms:play-services:8.3.0'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:support-v4:23.1.1'
+    compile 'com.google.android.gms:play-services-ads:8.3.0'
+    compile 'com.google.android.gms:play-services-auth:8.3.0'
+    compile 'com.google.android.gms:play-services-gcm:8.3.0'
+}

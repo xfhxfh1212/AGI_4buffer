@@ -1,0 +1,127 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jbtang.agi_4buffer.ui.LoginFragment">
+
+    <RelativeLayout
+        android:id="@+id/login_div"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="15dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/background_login_div_bg"
+        >
+        <!-- 用户名 text -->
+        <TextView
+            android:id="@+id/welcome_user_input"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:text="@string/page_login_label_username"
+            android:textSize="20sp"
+            android:gravity="center"
+            style="@style/normalText"
+            />
+        <!--  TODO: disable auto correct. -->
+        <!-- 用户名 input -->
+        <EditText
+            android:id="@+id/welcome_username_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/welcome_user_input"
+            android:singleLine="true"
+            android:inputType="text"
+            />
+        <!-- 密码 text -->
+        <TextView
+            android:id="@+id/welcome_password_input"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/welcome_username_edit"
+            android:layout_marginTop="3dp"
+            android:text="@string/page_login_label_password"
+            android:textSize="20sp"
+            android:gravity="center"
+            style="@style/normalText"
+            />
+        <!-- 密码 input -->
+        <EditText
+            android:id="@+id/welcome_password_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/welcome_username_edit"
+            android:layout_toRightOf="@id/welcome_password_input"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            />
+        <!-- 剩余次数 text -->
+        <TextView
+            android:id="@+id/welcome_count_text"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/welcome_password_edit"
+            android:layout_marginTop="3dp"
+            android:text="@string/page_login_label_count"
+            android:textSize="20sp"
+            android:gravity="center"
+            style="@style/normalText"
+            />
+        <!-- 剩余次数 input -->
+        <TextView
+            android:id="@+id/welcome_count_edit"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/welcome_password_edit"
+            android:layout_toRightOf="@id/welcome_count_text"
+            android:gravity="center"
+            />
+        <CheckBox
+            android:id="@+id/welcome_remember_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/welcome_password_edit"
+            android:layout_toRightOf="@+id/welcome_count_edit"
+            android:text="@string/page_login_label_remember"
+            android:textSize="17sp"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/welcome_manage_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/welcome_count_edit"
+            android:layout_toLeftOf="@+id/welcome_login_button"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/page_login_label_manage"
+            android:textSize="17sp"
+            />
+        <!-- 登陆 button -->
+        <Button
+            android:id="@+id/welcome_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/welcome_count_edit"
+            android:layout_alignRight="@id/welcome_password_edit"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/page_login_label_signin"
+            android:textSize="17sp"
+            />
+        <!-- 提示栏 -->
+        <TextView
+            android:id="@+id/progress_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/welcome_password_edit"
+            android:layout_alignBottom="@id/welcome_login_button"
+            android:gravity="bottom"
+            android:textSize="13dp"
+            android:textColor="#888"
+            android:autoLink="web"
+            android:clickable="true"
+            />
+    </RelativeLayout>
+</FrameLayout>
